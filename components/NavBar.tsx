@@ -41,10 +41,13 @@ export const NavBar = () => {
     return (
         <Container>
             <DivButtons>
+                <Link href={'/'}>
                 <Button active>
                     <RiHome3Line size="3rem" />
                     <p>Inicio</p>
                 </Button>
+                </Link>
+
                 <Link href={'/juegos'}>
                 <Button>
                     <CgGames size="3rem" />
