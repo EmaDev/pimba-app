@@ -31,7 +31,7 @@ export const Header = () => {
   return (
     <Container>
       <Img>
-        <Image src={require('../assets/logo.png')} />
+        <Image height="105px" src={require('../assets/logo.png')} />
       </Img>
     </Container>
   )

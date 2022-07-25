@@ -23,7 +23,7 @@ const initialPoints: TeamPoints = {
     quantity: 0,
     rendersActual: 0,
     renders: [
-        { id: 0, quantity: 1 },
+        { id: 0, quantity: 0 },
     ]
 }
 
@@ -107,7 +107,11 @@ export const useAnotador = () => {
                     teamState.renders.map((item, i) => (
                         <AnotadorImage key={i}>
                             <Image
-                                src={require(`../assets/truco/${item.quantity}.png`)}
+                                src={
+                                    (quantity) === 0 ? require(`../assets/truco/0.png`)
+                                    :
+                                    require(`../assets/truco/${item.quantity}.png`)
+                                }
                             />
                         </AnotadorImage>
                     ))

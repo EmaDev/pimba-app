@@ -3,9 +3,11 @@ import { FcIdea } from 'react-icons/fc';
 import { HeaderGameScreen } from '../../components/HeaderGameScreen';
 import { Layout } from '../../components/Layout';
 import { ModalGames } from '../../components/ModalGames';
+import { usePreguntas } from '../../hooks/usePreguntas';
 import { Button, CreateButton, GameScreenContainer, TextGame } from '../../styled/Games.module';
 
 const TriviaPage = () => {
+    const {selectRandomQuest, questionsSelected} = usePreguntas();
     const [isModalActive, setIsModalActive] = useState<boolean>(false);
     const closeModal = () => {
         setIsModalActive(false);
@@ -15,6 +17,7 @@ const TriviaPage = () => {
     }
     return (
         <Layout>
+            <button onClick={selectRandomQuest}>Sort pregs</button>
             {isModalActive && 
             <ModalGames allowCreate closeModal={closeModal}
              instructions="Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto totam fugiat non dolore corporis delectus dolor aspernatur officia iure harum eveniet facere enim minus, quia est ullam odio saepe laborum."
@@ -27,6 +30,16 @@ const TriviaPage = () => {
                 <TextGame>consectetur adipisicing elit. Quibusdam nemo velit nobis.</TextGame>
                 <Button>Siguiente</Button>
             </GameScreenContainer>
+
+            <div>
+                {
+                    questionsSelected.map( (quest) => (
+                        <p key={quest.id}>
+                            {quest.pregunta}
+                        </p>
+                    ))
+                }
+            </div>
         </Layout>
     )
 }

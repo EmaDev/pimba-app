@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { PriceContainer } from '../styled/Global.module';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Props {
     img: any;
@@ -37,14 +38,16 @@ const ImageContainer = styled.div`
     filter: drop-shadow(2px 2px 4px #222);
    }
 `;
-export const ProductCardVertical: FC<Props> = ({ img, price, description}) => {
+export const ProductCardVertical: FC<Props> = ({ img, price, description }) => {
     return (
         <Card>
-            <ImageContainer>
-                <img src={img.default.src}
-                  alt={description}
-                />
-            </ImageContainer>
+            <Link href="/producto/smirnoff950ml">
+                <ImageContainer>
+                    <img src={img.default.src}
+                        alt={description}
+                    />
+                </ImageContainer>
+            </Link>
             <PriceContainer>
                 <p className='price'>{`$ ${price}`}</p>
                 <HiOutlineShoppingCart size="2.5rem" />
