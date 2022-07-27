@@ -1,6 +1,5 @@
-export const pregsGeo = [
-    { "id": "1", "pregunta": " La capital de Brasil es ...", "respuestas": ["Nueva York ", "Brasilia ", "Mexico ", "Sofea "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
-    { "id": "2", "pregunta": " La capital de Bulgaria es...", "respuestas": ["Sofia ", "Ottawa ", "Mexico ", "Sofea "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
+export const pregsGeoOld = [
+    { "id": "2", "pregunta": " La capital de Bulgaria es...", "respuestas": ["Sofia", "true", "Ottawa", "false", "Mexico", "false", "Sofea"] },
     { "id": "3", "pregunta": " La capital de Camerun es...", "respuestas": ["Sofia ", "Ottawa ", "Rio de Janeiro ", "Yaund"], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
     { "id": "4", "pregunta": " La capital de Canada es...", "respuestas": ["Ottawa ", "Washington ", "Mexico ", "Madrid "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
     { "id": "5", "pregunta": " La capital de Chile es...", "respuestas": ["Londres ", "Lima", "Santiago ", "Madrid "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
@@ -8,40 +7,85 @@ export const pregsGeo = [
     { "id": "7", "pregunta": " La capital del Congo es...", "respuestas": ["Nueva York ", "Bogota ", "Madrid ", "Kinshasa "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
     { "id": "8", "pregunta": " La capital de Corea del sur es...", "respuestas": ["Seul ", "Bogota ", "Paris ", "Pekin"], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
     { "id": "9", "pregunta": " La capital de Costa de Marfil es...", "respuestas": ["Yamusukro ", "Viena ", "Le�n ", "Praga "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
-    { "id": "10", "pregunta": " La capital de Croacia es...", "respuestas": ["Yamusrkro ", "Viena ", "Le�n ", "Zagreb "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
-    { "id": "11", "pregunta": " La capital de Cuba es...", "respuestas": ["Madrid ", "Viena ", "Habana ", "Nueva York "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
-    { "id": "12", "pregunta": " �Cual es el r�o mas largo del Asia?", "respuestas": ["Amur ", "Yangts� ", "Amarillo ", "Mekong "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
-    { "id": "13", "pregunta": " �Cual es la cadena monta�osa considerada m�s antigua y de menor relieve de entre las siguientes?", "respuestas": ["Montes Escandinavos ", "Pirineos ", "C�ucaso ", "Alpes "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
-    { "id": "14", "pregunta": " �En que cordillera se encuentra el monte Everest?", "respuestas": ["Himalaya ", "Pamir ", "Decc�n ", "Cherski "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
-    { "id": "15", "pregunta": " �A que pa�s pertenece al Ant�rtida?", "respuestas": ["Estados Unidos ", "Dinamarca ", "Chile ", "A ninguno "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
-    { "id": "16", "pregunta": " �A que pa�s pertenece al Ant�rtida?", "respuestas": ["Estados Unidos ", "Dinamarca ", "Chile ", "A ninguno "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
-    { "id": "17", "pregunta": " �Cu�l de estos tipos de climas no se encuentra entre los m�s habituales en Europa?", "respuestas": ["Oce�nico ", "Mediterr�neo ", "Ecuatorial ", "Continental "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
-    { "id": "18", "pregunta": " �Que tipo de climas predominan en el norte del continente americano?", "respuestas": ["C�lidos ", "Templados ", "Fr�os ", "Des�rticos "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
-    { "id": "19", "pregunta": " �Cual de estos r�os americanos desemboca en el �rtico?", "respuestas": ["Mississippi ", "Yuk�n ", "Colorado ", "Columbia "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
-    { "id": "20", "pregunta": " �Cual de estos r�os europeos no desemboca en la vertiente atl�ntica?", "respuestas": ["Danubio ", "Tajo", "Sena", "Rin "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
-    { "id": "21", "pregunta": " �A qu� pa�s pertenece la isla de Eubea?", "respuestas": ["Grecia ", "Espa�a ", "Alemania ", "Italia "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
-    { "id": "22", "pregunta": " �Sobre qu� mar tiene sus costas N�ger?", "respuestas": ["Mediterr�neo ", "Blanco ", "Rojo ", "Ninguno "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
-    { "id": "23", "pregunta": " �Qu� r�o Europeo al final de su recorrido, forma la frontera entre Austria y Alemania?", "respuestas": ["Inn ", "T�mesis ", "�ufrates ", "Tigris "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
-    { "id": "24", "pregunta": " �Cu�l es la capital de la Rep�blica Centroafricana?", "respuestas": ["Barbados ", "Puerto pr�ncipe ", "Bangui ", "Praga "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
-    { "id": "25", "pregunta": " �En d�nde desemboca el r�o europeo Bug Meridional?", "respuestas": ["Mar Egeo ", "Mar Mediterr�neo ", "Mar Muerto ", "Mar Negro "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
-    { "id": "26", "pregunta": " �Cu�l es el principal r�o de Hungr�a?", "respuestas": ["Tisza ", "Sena ", "Po ", "T�mesis "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
-    { "id": "27", "pregunta": " �Cu�l es la capital de la Rep�blica Isl�mica de Mauritania?", "respuestas": ["Roma ", "Praga ", "Nuakchot ", "Sof�a "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
-    { "id": "28", "pregunta": " �A qu� monta�a, la m�s elevada de �frica, pertenecen los picos volc�nicos Kibo y Mawensi?", "respuestas": ["Aconcagua ", "Kilimanjaro ", "Everest ", "K2 "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
-    { "id": "29", "pregunta": " �De qu� oc�ano forma parte el mar de Bering?", "respuestas": ["�ndico ", "Pac�fico ", "Atl�ntico ", "Glacial �rtico "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
-    { "id": "30", "pregunta": " �Cu�l es el mayor r�o que fluye por Brasil?", "respuestas": ["Po ", "Amazonas ", "Rio de Plata ", "Nal�n "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
-    { "id": "31", "pregunta": " �Cu�l es la capital de Irlanda?", "respuestas": ["Mascat ", "Argel ", "Dubl�n ", "Koror "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
-    { "id": "32", "pregunta": " �Cu�l es la cima m�s elevada de las antiguas rep�blicas sovi�ticas?", "respuestas": ["Everest ", "Teide ", "Aconcagua ", "Ismail Samani "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
-    { "id": "33", "pregunta": " �Qu� sistema monta�oso se extiende a lo largo de la frontera septentrional de la Rep�blica Checa?", "respuestas": ["Pirineos ", "Himalaya ", "Sudetes ", "Apeninos "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
-    { "id": "388", "pregunta": " �Cu�l es la cima m�s alta en la cordillera centroeuropea Sudetes?", "respuestas": ["Everest ", "Sriezka ", "Filtz Roy ", "Mont Blanc "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
-    { "id": "34", "pregunta": " �En qu� pa�s se encuentra el r�o Arkansas?", "respuestas": ["Francia ", "Paraguay ", "Finlandia ", "Estados Unidos "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
-    { "id": "35", "pregunta": " �Cu�les son los colores de la bandera de Letonia?", "respuestas": ["Azul y negro ", "Amarillo y  verde ", "Azul, verde y negro ", "Rojo y blanco "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
-    { "id": "36", "pregunta": " �En qu� pa�s nace el r�o Kabul?", "respuestas": ["Vietnam ", "Noruega ", "Alemania ", "Afganist�n "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
-    { "id": "37", "pregunta": " �Cu�ntas islas componen el grupo de las Islas V�rgenes de los Estados Unidos?", "respuestas": ["15 ", "8 ", "10 ", "3 "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
-    { "id": "38", "pregunta": " �En qu� continente se encuentra el r�o Tocantins?", "respuestas": ["Am�rica ", "Europa ", "Asia ", "�frica "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
-    { "id": "39", "pregunta": " �Cu�l es el pa�s m�s peque�o de Centroam�rica?", "respuestas": ["Nicaragua ", "Panam� ", "El Salvador ", "Honduras "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
-    { "id": "40", "pregunta": " �En qu� pa�s de Europa se encuentra el misterioso Lago de Ness?", "respuestas": ["Finlandia ", "Escocia ", "Austria ", "Dinamarca "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
-    { "id": "41", "pregunta": " �En qu� pa�s se encuentra la ciudad de Avi��n?", "respuestas": ["Alemania ", "Francia ", "Rep�blica checa ", "Suecia "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
-    { "id": "42", "pregunta": " �Cu�l es el r�o m�s largo de Lituania?", "respuestas": ["Jura ", "Sesupe ", "Niemen ", "Danubio "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
-    { "id": "43", "pregunta": " �En qu� continente se encuentra el r�o Kasai?", "respuestas": ["�frica ", "Asia ", "Am�rica ", "Europa "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
-    { "id": "44", "pregunta": " �Sobre qu� oc�ano se encuentran las islas Maldivas?", "respuestas": ["Atl�ntico ", "Glacial �rtico ", "Pac�fico ", "�ndico "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 }
+    { "id": "14", "pregunta": " En que cordillera se encuentra el monte Everest?", "respuestas": ["Himalaya ", "Pamir ", "Decc�n ", "Cherski "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
+    { "id": "15", "pregunta": " A que pais pertenece al Antartida?", "respuestas": ["Estados Unidos ", "Dinamarca ", "Chile ", "A ninguno "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
+    { "id": "17", "pregunta": " Cual de estos tipos de climas no se encuentra entre los mas habituales en Europa?", "respuestas": ["Oceanico ", "Mediterraneo ", "Ecuatorial ", "Continental "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
+    { "id": "18", "pregunta": " Que tipo de climas predominan en el norte del continente americano?", "respuestas": ["Calidos ", "Templados ", "Frios ", "Deserticos "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
+    { "id": "19", "pregunta": " Cual de estos rios americanos desemboca en el Artico?", "respuestas": ["Mississippi ", "Yuk�n ", "Colorado ", "Columbia "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
+    { "id": "20", "pregunta": " Cual de estos rios europeos no desemboca en la vertiente atlantica?", "respuestas": ["Danubio ", "Tajo", "Sena", "Rin "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
+    { "id": "21", "pregunta": " A qua pais pertenece la isla de Eubea?", "respuestas": ["Grecia ", "España ", "Alemania ", "Italia "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
+    { "id": "22", "pregunta": " Sobre que mar tiene sus costas Niger?", "respuestas": ["Mediterraneo ", "Blanco ", "Rojo ", "Ninguno "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
+    { "id": "23", "pregunta": " Que rio Europeo al final de su recorrido, forma la frontera entre Austria y Alemania?", "respuestas": ["Inn ", "Tamesis ", "Eufrates ", "Tigris "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
+    { "id": "24", "pregunta": " Cual es la capital de la Republica Centroafricana?", "respuestas": ["Barbados ", "Puerto pr�ncipe ", "Bangui ", "Praga "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
+    { "id": "25", "pregunta": " En donde desemboca el rio europeo Bug Meridional?", "respuestas": ["Mar Egeo ", "Mar Mediterr�neo ", "Mar Muerto ", "Mar Negro "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 },
+    { "id": "26", "pregunta": " Cual es el principal rio de Hungria?", "respuestas": ["Tisza ", "Sena ", "Po ", "T�mesis "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
+    { "id": "27", "pregunta": " Cual es la capital de la Republica Islamica de Mauritania?", "respuestas": ["Roma ", "Praga ", "Nuakchot ", "Sof�a "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
+    { "id": "38", "pregunta": " En que continente se encuentra el rio Tocantins?", "respuestas": ["America ", "Europa ", "Asia ", "Africa "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
+    { "id": "39", "pregunta": " Cual es el pais mas pequeño de Centroamerica?", "respuestas": ["Nicargua ", "Panama", "El Salvador ", "Honduras "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
+    { "id": "40", "pregunta": " En que pais de Europa se encuentra el misterioso Lago de Ness?", "respuestas": ["Finlandia ", "Escocia ", "Austria ", "Dinamarca "], "contestacion": [" Incorrecto.", " Correcto!", " Incorrecto.", " Incorrecto."], "correcta": 1 },
+    { "id": "42", "pregunta": " Cual es el rio mas largo de Lituania?", "respuestas": ["Jura ", "Sesupe ", "Niemen ", "Danubio "], "contestacion": [" Incorrecto.", " Incorrecto.", " Correcto!", " Incorrecto."], "correcta": 2 },
+    { "id": "43", "pregunta": " En que continente se encuentra el rio Kasai?", "respuestas": ["Africa ", "Asia ", "America ", "Europa "], "contestacion": [" Correcto!", " Incorrecto.", " Incorrecto.", " Incorrecto."], "correcta": 0 },
+    { "id": "44", "pregunta": " Sobre que oceano se encuentran las islas Maldivas?", "respuestas": ["Atlantico ", "Glacial Artico ", "Pacifico ", "Indico "], "contestacion": [" Incorrecto.", " Incorrecto.", " Incorrecto.", " Correcto!"], "correcta": 3 }
+]
+
+interface PregsProps {
+    id: number;
+    pregunta: string;
+    respuestas: RespProps[];
+}
+interface RespProps{
+    opcion: string,
+    esCorrecta: boolean;
+}
+export const pregsGeo: PregsProps[] = [
+    {
+        id: 0, 
+        pregunta: 'La capital de Bulgaria es...',
+        respuestas: [
+            { opcion: 'Sofia', esCorrecta: true },
+            { opcion: 'Ottawa', esCorrecta: false },
+            { opcion: 'Sofea', esCorrecta: false },
+            { opcion: 'Seul', esCorrecta: false }
+        ]
+    },
+    {
+        id: 1, 
+        pregunta: 'La capital de Camerun es...',
+        respuestas: [
+            { opcion: 'Londres', esCorrecta: false },
+            { opcion: 'Tisza', esCorrecta: false },
+            { opcion: 'Yaund', esCorrecta: true },
+            { opcion: 'Seul', esCorrecta: false }
+        ]
+    },
+    {
+        id: 2, 
+        pregunta: 'En que cordillera se encuentra el monte Everest?',
+        respuestas: [
+            { opcion: 'Cordillera de los Andes', esCorrecta: false },
+            { opcion: 'Himalaya', esCorrecta: true },
+            { opcion: 'Cherski', esCorrecta: false },
+            { opcion: 'Pamir', esCorrecta: false }
+        ]
+    },
+    {
+        id: 3, 
+        pregunta: 'Cual de estos tipos de climas no se encuentra entre los mas habituales en Europa?',
+        respuestas: [
+            { opcion: 'Oceanico', esCorrecta: true },
+            { opcion: 'Mediterraneo', esCorrecta: false },
+            { opcion: 'Continental', esCorrecta: false },
+            { opcion: 'Ecuatorial', esCorrecta: true }
+        ]
+    },
+    {
+        id:4,
+        pregunta: 'Cual de estos rios europeos no desemboca en la vertiente atlantica?',
+        respuestas:[
+            {opcion: 'Danubio',esCorrecta: true},
+            {opcion: 'Tajo', esCorrecta: false},
+            {opcion: 'Sena', esCorrecta: false},
+            {opcion: 'Rin', esCorrecta: false}
+        ]
+    }
 ]

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -50,6 +51,7 @@ export const SwiperCard = ({ num }: Props) => {
     return (
         <Card>
             <Number>{num}</Number>
+              <Image src={require(`../assets/letters/${num}.png`)}/>
         </Card>
     )
 }

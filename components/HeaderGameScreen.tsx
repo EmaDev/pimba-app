@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import {BsFillInfoCircleFill} from 'react-icons/bs';
 import {IoIosArrowBack} from 'react-icons/io';
+import { useRouter } from 'next/router';
 
 
 const Container = styled.header`
@@ -41,10 +42,13 @@ interface Props {
     openModal?: () => void;
 }
 export const HeaderGameScreen:FC<Props> = ({title, openModal}) => {
+
+  const {back} = useRouter();
+
   return (
     <Container>
         <ButtonsContainer>
-            <IoIosArrowBack/>
+            <IoIosArrowBack size="3rem" onClick={back}/>
             <BsFillInfoCircleFill onClick={openModal}/>
         </ButtonsContainer>
         <Title>{title}</Title>

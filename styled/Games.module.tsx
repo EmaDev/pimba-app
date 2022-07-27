@@ -122,7 +122,8 @@ export const GameScreenContainer = styled.main`
 `; 
 
 export const TextGame = styled.p`
-   margin: 0;
+   max-width: 700px;
+   margin: 1rem auto;
    font-size: 2.6rem;
    font-weight: 700;
    color: #343434;
@@ -201,6 +202,41 @@ border-radius: 8px;
  color: grey;
  transition: .3s;
 }
+`;
+
+export const ButtonAnswer = styled.button`
+   width: 100%;
+   padding: 2rem 1rem;
+   margin: .5rem 0;
+   background-color: gray;
+   color: #fff;
+   font-size: 2rem;
+   font-weight: 500;
+   border-radius: 8px;
+   border-style: none;
+`;
+
+export const TimerContainer = styled.div`
+   position: absolute;
+   width: 90px;
+   heigth: 90px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 2rem;
+   border-radius: 100%;
+   background-color: #fff;
+   border: 3px solid #3E3E3E;
+   top: -4rem; left: 2rem;
+
+   p{
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 3rem;
+      color: #3E3E3E;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+   }
 `;
 
  

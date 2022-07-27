@@ -15,7 +15,7 @@ const JuegosPage = () => {
       <Container>
         <DivHeader>
           <TextHeader>
-            <h1>Hola,<span>Juanito Carrillo</span></h1>
+            <h1>Hola,<span>Priscila</span></h1>
             <h2>Que queres jugar?</h2>
           </TextHeader>
           <UserIcon>

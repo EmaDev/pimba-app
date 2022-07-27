@@ -4,6 +4,7 @@ import { RiHome3Line } from 'react-icons/ri';
 import { CgGames, CgProfile } from 'react-icons/cg';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 const Container = styled.div`
    width: 100%;
    position: fixed;
@@ -38,18 +39,22 @@ const Button = styled.div<any>`
    }
 `;
 export const NavBar = () => {
+
+    const {route} = useRouter();
+
+    //console.log(router.route);
     return (
         <Container>
             <DivButtons>
                 <Link href={'/'}>
-                <Button active>
+                <Button active={route === '/' ? true : false}>
                     <RiHome3Line size="3rem" />
                     <p>Inicio</p>
                 </Button>
                 </Link>
 
                 <Link href={'/juegos'}>
-                <Button>
+                <Button active={route === '/juegos' ? true : false}>
                     <CgGames size="3rem" />
                     <p>Juegos</p>
                 </Button>

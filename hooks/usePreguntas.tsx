@@ -2,12 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { pregsGeo } from '../helpers/geografia';
 
 const pregs = pregsGeo;
-
+/*
 interface OptionProps {
     id: string;
     correcta: number;
     pregunta: string;
     contestacion: [];
+    respuestas: [];
+}*/
+
+interface OptionProps {
+  id: number;
+  pregunta: string;
+  respuestas: Answers[];
+}
+interface Answers{
+  opcion: string,
+  esCorrecta: boolean;
 }
 
 export const usePreguntas = () => {

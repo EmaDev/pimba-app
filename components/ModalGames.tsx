@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {FcIdea} from 'react-icons/fc';
 
@@ -83,8 +83,18 @@ interface Props {
     creatorInstructins?: string;
     instructions: string;
     closeModal: () => void;
+    onStart?: () => void;
+    isStarting?: boolean;
 }
-export const ModalGames = ({allowCreate, instructions,creatorInstructins , closeModal}:Props) => {
+export const ModalGames = ({allowCreate, instructions,creatorInstructins , closeModal, onStart, isStarting}:Props) => {
+  
+
+  const handleStart = () => {
+    if(isStarting && onStart ){
+      onStart();
+    }
+    closeModal();
+  }
   return (
     <ModalContainer>
         <Modal>
@@ -100,7 +110,7 @@ export const ModalGames = ({allowCreate, instructions,creatorInstructins , close
                 <p>{creatorInstructins}</p>
             </Creator>
             }
-            <Button onClick={closeModal}>Comenzar</Button>
+             <Button onClick={handleStart}>{isStarting ? 'Comenzar' : 'Cerrar'}</Button>
         </Modal>
     </ModalContainer>
   )
