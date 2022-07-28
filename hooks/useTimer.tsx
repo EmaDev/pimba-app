@@ -21,5 +21,5 @@ export const useTimer = (time: number) => {
     setTimer(time);
   }
 
-  return { timer, isTimerActive, setStartTimer, restartTimer}
+  return { timer, isTimerActive, setStartTimer, restartTimer};
 }

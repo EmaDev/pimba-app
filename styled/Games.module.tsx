@@ -73,6 +73,7 @@ export const ToolsContainer = styled.div`
    margin: 2rem auto;
    display: flex;
    overflow-x:auto;
+   padding-bottom: 1.5rem;
 `;
 export const ToolCard = styled.div`
    min-width: 100px;
@@ -132,8 +133,8 @@ export const TextGame = styled.p`
 
 export const CreateButton = styled.button`
     position: absolute;
-    right: 1rem;
-    top: 1rem;
+    right: .5rem;
+    top: .5rem;
     margin:auto;
     border-style:none;
     background: none;
@@ -186,15 +187,15 @@ export const AnotadorImage = styled.div`
    heigth: 70px;
 `;
 
-export const Button = styled.button` 
+export const Button = styled.button<any>` 
 width: 90%;
 max-width: 400px;
-padding: 1rem;
+padding: ${({bold}) => bold ? '2rem 1rem' : '1rem'};
 background-color: ${({color}) => color ? color : '#26282d'};
 font-size: 2rem;
 color: #fff;
 border-style: none;
-margin: 1rem auto 2rem auto;
+margin: ${({bold}) => bold ? '.5rem 0' : '1rem auto 2rem auto'};
 border-radius: 8px;
 
 &:hover{

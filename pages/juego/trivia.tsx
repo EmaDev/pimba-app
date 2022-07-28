@@ -3,16 +3,27 @@ import { FcIdea } from 'react-icons/fc';
 import { HeaderGameScreen } from '../../components/HeaderGameScreen';
 import { Layout } from '../../components/Layout';
 import { ModalGames } from '../../components/ModalGames';
+import { Spinner } from '../../components/Spinner';
+import { Trivia } from '../../components/Trivia';
 import { usePreguntas } from '../../hooks/usePreguntas';
-import { useTimer } from '../../hooks/useTimer';
-import { Button, ButtonAnswer, CreateButton, GameScreenContainer, TextGame, TimerContainer } from '../../styled/Games.module';
+import { Button, CreateButton, GameScreenContainer } from '../../styled/Games.module';
+import { Title } from '../../styled/Global.module';
 
+interface CatgoriaProps {
+    key: string;
+    name: string;
+}
+const categorias: CatgoriaProps[] = [
+    { key: 'ochonueve', name: 'Geografia' },
+    { key: 'ochonueve', name: 'Historia' },
+    { key: 'ochonueve', name: 'Programacion' },
+    { key: 'ochonueve', name: 'Ciencia' },
+]
 const TriviaPage = () => {
-    const { selectRandomQuest, questionsSelected } = usePreguntas();
-    const [actualQuestion, setActualQuestion] = useState(0);
-    const { timer, isTimerActive, setStartTimer, restartTimer } = useTimer(10);
-    const [isFinshed, setIsFinished] = useState(false);
-    const [isModalActive, setIsModalActive] = useState<boolean>(true);
+
+    const { getQuestionFromDB, selectRandomQuest, questionsSelected, isReady } = usePreguntas();
+    //modal
+    const [isModalActive, setIsModalActive] = useState<boolean>(false);
     const [isStarting, setIsStatating] = useState(true);
 
     const closeModal = () => {
@@ -22,40 +33,12 @@ const TriviaPage = () => {
         setIsModalActive(true);
     }
 
-    const handlePlayAgain = () => {
-        selectRandomQuest();
-        setIsFinished(false);
-        setActualQuestion(0);
-        restartTimer();
-    }
-
-    const handleAnswerSubmit = ({ target }: any, isCorrect: boolean) => {
-        target.style.backgroundColor = (isCorrect) ? '#49f148' : '#f04c4c';
-        setTimeout(() => {
-            target.style.backgroundColor = 'gray';
-            if (actualQuestion === questionsSelected.length - 1) {
-                setIsFinished(true);
-            } else {
-                setActualQuestion(actualQuestion + 1);
-                restartTimer();
-            }
-        }, 1500);
-    }
-
-    const handleNextQuestion = () => {
-        if (actualQuestion === questionsSelected.length - 1) {
-            setIsFinished(true);
-        } else {
-            setActualQuestion(actualQuestion + 1);
-            restartTimer();
-        }
-    };
-
     return (
         <Layout>
+
             {isModalActive &&
                 <ModalGames allowCreate closeModal={closeModal}
-                    onStart={() => { selectRandomQuest(); setStartTimer(true); setIsStatating(false)}}
+                    onStart={() => { selectRandomQuest(); setIsStatating(false) }}
                     isStarting={isStarting}
                     instructions="Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto totam fugiat non dolore corporis delectus dolor aspernatur officia iure harum eveniet facere enim minus, quia est ullam odio saepe laborum."
                     creatorInstructins='Architecto totam fugiat non dolore corporis delectus dolor aspernatur officia iure quia est ullam odio saepe laborum.'
@@ -63,35 +46,27 @@ const TriviaPage = () => {
             }
             <HeaderGameScreen title='Trivia' openModal={openModal} />
             <GameScreenContainer>
-                <CreateButton><FcIdea size="4rem" /></CreateButton>
-                {(questionsSelected.length > 0 && !isFinshed) ?
+                {(questionsSelected.length > 0 && isReady) &&
+                    <Trivia
+                        questions={questionsSelected}
+                        reselectQuest={() => selectRandomQuest}
+                    />
+                }
+                {
+                    (questionsSelected.length === 0) &&
                     <>
-                        <p>{`Pregunta ${actualQuestion + 1} de ${questionsSelected.length}`}</p>
-                        {(isTimerActive) ?
-                            <TimerContainer><p>{timer}</p></TimerContainer>
-                            :
-                            <Button onClick={handleNextQuestion}>Siguiente</Button>
+                        <CreateButton><FcIdea size="4rem" /></CreateButton>
+                        <Title>Selecciona una tematica</Title>
+                        <br />
+                        {
+                            categorias.map(({ key, name }) => (
+                                <Button key={key} bold
+                                    onClick={() => getQuestionFromDB(key)}
+                                >{name}
+                                </Button>
+                            ))
                         }
-                        <TextGame>{questionsSelected[actualQuestion].pregunta}</TextGame>
-                        <div>
-                            {
-                                questionsSelected[actualQuestion].respuestas.map((resp, i) => (
-                                    <ButtonAnswer key={i}
-                                        disabled={!isTimerActive}
-                                        onClick={(e) => handleAnswerSubmit(e, resp.esCorrecta)}>
-                                        {resp.opcion}
-                                    </ButtonAnswer>
-                                ))
-                            }
-                        </div>
                     </>
-                    :
-
-                    <>
-                        <Button onClick={handlePlayAgain}>Volver a jugar</Button>
-                        <Button onClick={() => (window.location.href = "/juego/trivia")}>Eligir otra tematica</Button>
-                    </>
-
                 }
             </GameScreenContainer>
         </Layout>

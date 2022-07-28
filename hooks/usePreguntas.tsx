@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { pregsGeo } from '../helpers/geografia';
 
-const pregs = pregsGeo;
-/*
-interface OptionProps {
-    id: string;
-    correcta: number;
-    pregunta: string;
-    contestacion: [];
-    respuestas: [];
-}*/
+const pregs = [
+  {key: 'unocero', pregs: []},
+  {key: 'ochonueve', pregs: pregsGeo},
+  {key: 'cuatrodoce', pregs: []}
+];
 
-interface OptionProps {
+export interface OptionProps {
   id: number;
   pregunta: string;
   respuestas: Answers[];
@@ -25,16 +21,25 @@ export const usePreguntas = () => {
 
   const [stateQuestions, setStateQuestions] = useState<any[]>([]);
   const [questionsSelected, setQuestionsSelected] = useState<OptionProps[]>([]);
+  const [isReady, seIsReady] = useState(false);
+ 
+  const getQuestionFromDB = (categorieKey?:string) => {
 
-  useEffect( () => {
-    //get preguntas;
-    setStateQuestions(pregs);
-  },[]); 
+    const categorySearched = pregs.find( categ => categ.key === categorieKey); 
+    
+    if(categorySearched) {
+      setStateQuestions(categorySearched.pregs);
+    }
+
+    setTimeout( () => {
+      seIsReady(true);
+    },2000);
+  }
 
   const selectRandomQuest = () => {
     const desordenado = stateQuestions.sort(() => Math.random() - 0.5);
     setQuestionsSelected(desordenado.slice(0,10));
   }
 
-  return {selectRandomQuest, questionsSelected};
+  return {getQuestionFromDB,selectRandomQuest, questionsSelected, isReady};
 }
