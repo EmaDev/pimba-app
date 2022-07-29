@@ -8,7 +8,9 @@ export const useAddRemove = (initialValue?:number) => {
     setquatity( quatity + 1);
   }
   const removeQuatity = () => {
-    setquatity( quatity - 1);
+    if(quatity > 1){
+      setquatity( quatity - 1);
+    }
   }
 
   return {quatity, addQuatity, removeQuatity};

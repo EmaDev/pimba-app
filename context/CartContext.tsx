@@ -11,9 +11,10 @@ export interface ItemCart {
 type CartContextProps  = {
     cart: ItemCart[];
     addItemToCart: (item: ItemCart) => void;
-    /*removeItemToCart: (id: string) => void;
+    removeItemToCart: (id: string) => void;
+    updateItem: (id: string, quant: number) => void;
     deleteCart: () => void;
-    updateItem: (id: string, quant: number) => void;*/
+    searchItem: (prodId: string) => void;
 }
 
 
@@ -27,15 +28,35 @@ export const CartProvider = ({children}:any) => {
 
     const [cartState, dispatch] = useReducer(cartReducer, initialState);
 
-
     const addItemToCart = (item: ItemCart) => {
         dispatch({type: 'addItem', payload: item});
     }
+
+    const removeItemToCart = (prodId:string) => {
+        dispatch({type: 'removeItem', payload:prodId});
+    }
+    const updateItem = (prodId:string, quatity: number) => {
+        dispatch({type: 'updateItem', payload: {itemId: prodId, quant: quatity}});
+    }
+
+    const deleteCart = () => {
+        dispatch({type: 'clearCart'});
+    }
+
+    const searchItem = (prodId: string):ItemCart|undefined => {
+        const searched = cartState.cart.find( item => item.id === prodId);
+        return searched;
+    }
+    
     return (
         <CartContext.Provider
         value={{
             cart: cartState.cart,
-            addItemToCart
+            addItemToCart,
+            removeItemToCart,
+            updateItem,
+            deleteCart,
+            searchItem
         }}
         >
 

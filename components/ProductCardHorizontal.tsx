@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
+import Link from 'next/link';
 
 const Card = styled.div`
    width: 90%;
@@ -60,26 +61,30 @@ const Cart = styled.div`
   top: 0; right: 0;
   padding: 5px 0 3rem 5rem;
   z-index: 0;
+  width: 100px;
+  height: 80px;
 `;
 
 interface Props {
     img: any;
     price: number;
     description: string;
+    id: string;
 }
-export const ProductCardHorizontal:FC<Props> = ({ img, price, description }) => {
+export const ProductCardHorizontal: FC<Props> = ({ img, price, description, id }) => {
     return (
+        <Link href={`producto/${id}`}>
         <Card>
-            <Cart>
-                <HiOutlineShoppingCart style={{ margin: '1rem' }} size='2.6rem' />
-            </Cart>
-            <div><Image src={img.default.src} /></div>
-            <DescriptionDiv>
-                <Price className='price'>{`$ ${price}`}<span>{`$ ${price + 200}`}</span></Price>
-                <TextDescription>
-                    {description}
-                </TextDescription>
-            </DescriptionDiv>
+            <Cart/>
+                <div><Image src={img.default.src} /></div>
+                <DescriptionDiv>
+                    <Price className='price'>{`$ ${price}`}<span>{`$ ${price + 200}`}</span></Price>
+                    <TextDescription>
+                        {description}
+                    </TextDescription>
+                </DescriptionDiv>
+            
         </Card>
+        </Link>
     )
 }

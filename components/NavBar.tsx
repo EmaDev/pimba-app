@@ -30,39 +30,41 @@ const Button = styled.div<any>`
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   color: ${({active}) => active ? '#2c2c2c' : 'grey'};
+   color: ${({ active }) => active ? '#2c2c2c' : 'grey'};
    p{
     margin: -3px 0;
     padding: 0;
     font-size: 1.2rem;
-    font-weight: ${({active}) => active ? '700' : '500'};;
+    font-weight: ${({ active }) => active ? '700' : '500'};;
    }
 `;
 export const NavBar = () => {
 
-    const {route} = useRouter();
+    const { route } = useRouter();
 
     //console.log(router.route);
     return (
         <Container>
             <DivButtons>
                 <Link href={'/'}>
-                <Button active={route === '/' ? true : false}>
-                    <RiHome3Line size="3rem" />
-                    <p>Inicio</p>
-                </Button>
+                    <Button active={route === '/' ? true : false}>
+                        <RiHome3Line size="3rem" />
+                        <p>Inicio</p>
+                    </Button>
                 </Link>
 
                 <Link href={'/juegos'}>
-                <Button active={route === '/juegos' ? true : false}>
-                    <CgGames size="3rem" />
-                    <p>Juegos</p>
-                </Button>
+                    <Button active={route === '/juegos' ? true : false}>
+                        <CgGames size="3rem" />
+                        <p>Juegos</p>
+                    </Button>
                 </Link>
-                <Button>
-                    <HiOutlineShoppingCart size="3rem" />
-                    <p>Carrito</p>
-                </Button>
+                <Link href={'/carrito'}>
+                    <Button active={route === '/carrito' ? true : false}>
+                        <HiOutlineShoppingCart size="3rem" />
+                        <p>Carrito</p>
+                    </Button>
+                </Link>
                 <Button>
                     <CgProfile size="3rem" />
                     <p>Cuenta</p>

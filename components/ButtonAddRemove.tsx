@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { useAddRemove } from '../hooks/useAddRemove';
+import { CartContext, ItemCart } from '../context/CartContext';
 
 export const DivAddToCart = styled.div`
   display:flex;
   width: 90%;
-  margin: 1rem auto;
+  margin: 2rem auto;
   justify-content: space-between;
   align-items: center;
 `;
@@ -19,7 +20,7 @@ const Container = styled.div`
    display:grid;
    margin: 0 1rem;
    grid-template-columns: 25% 50% 25%;
-   background-color: grey;
+   background-color: gray;
    padding: .5rem;
    border-radius: 6px;
 `;
@@ -30,7 +31,7 @@ const ButtonPlusMinus = styled.button`
    align-items: center;
    justify-content:center;
    padding: 0 1.3rem;
-   background-color: #000;
+   background-color: #363636;
    color: #fff;
    font-size: 2.5rem;
    border-radius: 4px;
@@ -46,14 +47,41 @@ const NumberText = styled.p`
 
 const ButtonAddToCart = styled.button`
    width: 100%;
-   background-color: #000;
-   padding: 1rem;
+   background-color: #363636;
+   padding: 1rem 0;
    color: #fff;
    margin: 0 1rem;
+   border-radius: 6px;
+   border-style: none;
+    
+   div{
+    font-size: 1.8rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    p{
+        margin: 0 5px;
+    }
+   }
 `;
-export const ButtonAddRemove = () => {
+interface Props {
+    prod: ItemCart;
+}
+export const ButtonAddRemove = ({prod}:Props) => {
 
     const {quatity, addQuatity,removeQuatity} = useAddRemove(1);
+    const {addItemToCart} = useContext(CartContext);
+
+    const addToCart = () => {
+        addItemToCart({
+            id: prod.id,
+            name: prod.name,
+            price: prod.price,
+            quatity
+        })
+    }
+
     return (
         <DivAddToCart>
             <div>
@@ -66,7 +94,12 @@ export const ButtonAddRemove = () => {
             </div>
             <div>
                 <Label style={{color: 'transparent'}}>vwverb</Label>
-                <ButtonAddToCart>Agregar<HiOutlineShoppingCart/></ButtonAddToCart>
+                <ButtonAddToCart onClick={addToCart}>
+                    <div>
+                     <p>Agregar</p>
+                    <HiOutlineShoppingCart/>
+                    </div>
+                </ButtonAddToCart>
             </div>
         </DivAddToCart>
     )

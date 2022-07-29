@@ -1,9 +1,18 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+`;
 
 export const Header = styled.header`
-   padding: 1rem;
-   position: relative;
+   padding: 1rem 0;
+   width: 100%;
+   background-color: #d1d1d1;
+   border-radius: 0 0 0 280px;
 `;
 
 interface ContainerProductProps{
@@ -85,6 +94,12 @@ export const Description = styled.div`
     font-size: 2rem;
     color: #161718;
    }
+`;
+
+export const ButtonBack = styled.div`
+   font-size: 4.5rem;
+   margin: 0 1rem;
+   color: gray;
 `;
 
 

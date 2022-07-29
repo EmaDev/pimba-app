@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface Props {
+    id: string;
     img: any;
     price: number;
     description: string;
@@ -38,10 +39,10 @@ const ImageContainer = styled.div`
     filter: drop-shadow(2px 2px 4px #222);
    }
 `;
-export const ProductCardVertical: FC<Props> = ({ img, price, description }) => {
+export const ProductCardVertical: FC<Props> = ({ id,img, price, description }) => {
     return (
         <Card>
-            <Link href="/producto/smirnoff950ml">
+            <Link href={`/producto/${id}`}>
                 <ImageContainer>
                     <img src={img.default.src}
                         alt={description}
