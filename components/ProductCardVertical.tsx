@@ -51,7 +51,7 @@ export const ProductCardVertical: FC<Props> = ({ id,img, price, description }) =
             </Link>
             <PriceContainer>
                 <p className='price'>{`$ ${price}`}</p>
-                <HiOutlineShoppingCart size="2.5rem" />
+                
             </PriceContainer>
         </Card>
     )
