@@ -1,16 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { PriceContainer } from '../styled/Global.module';
-import Image from 'next/image';
 import Link from 'next/link';
-
-interface Props {
-    id: string;
-    img: any;
-    price: number;
-    description: string;
-}
+import { Product } from '../context/ProductsContext';
 
 const Card = styled.div`
    min-width: 150px;
@@ -39,19 +31,23 @@ const ImageContainer = styled.div`
     filter: drop-shadow(2px 2px 4px #222);
    }
 `;
-export const ProductCardVertical: FC<Props> = ({ id,img, price, description }) => {
+
+interface Props {
+    product: Product
+}
+export const ProductCardVertical:FC<Props> = ({product}) => {
+    const {id, name,image,price} = product;
     return (
         <Card>
             <Link href={`/producto/${id}`}>
                 <ImageContainer>
-                    <img src={img.default.src}
-                        alt={description}
+                    <img src={image}
+                        alt={name}
                     />
                 </ImageContainer>
             </Link>
             <PriceContainer>
                 <p className='price'>{`$ ${price}`}</p>
-                
             </PriceContainer>
         </Card>
     )

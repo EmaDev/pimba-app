@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { useAddRemove } from '../hooks/useAddRemove';
 import { CartContext, ItemCart } from '../context/CartContext';
+import { ProductToCart } from '../pages/producto/[id]';
 
 export const DivAddToCart = styled.div`
   display:flex;
@@ -70,7 +71,7 @@ const ButtonAddToCart = styled.button`
    }
 `;
 interface CompleteProps {
-    prod: ItemCart;
+    prod: ProductToCart;
 }
 interface SimpleProps {
     id: string;
@@ -109,7 +110,8 @@ export const ButtonAddRemove = ({prod}:CompleteProps) => {
             id: prod.id,
             name: prod.name,
             price: prod.price,
-            quatity
+            quatity,
+            image: prod.image
         });
         Swal.fire({
             position: 'top-end',

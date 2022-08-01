@@ -6,6 +6,7 @@ export interface ItemCart {
     name: string;
     quatity: number;
     price: number;
+    image: string;
 }
 
 type CartContextProps  = {

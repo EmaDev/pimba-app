@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { HiOutlineShoppingCart } from 'react-icons/hi';
 import Link from 'next/link';
+import { Product } from '../context/ProductsContext';
 
 const Card = styled.div`
    width: 90%;
@@ -66,21 +66,19 @@ const Cart = styled.div`
 `;
 
 interface Props {
-    img: any;
-    price: number;
-    description: string;
-    id: string;
+    product: Product;
 }
-export const ProductCardHorizontal: FC<Props> = ({ img, price, description, id }) => {
+export const ProductCardHorizontal: FC<Props> = ({product}) => {
+    const {id,image,name,price} = product;
     return (
         <Link href={`producto/${id}`}>
         <Card>
             <Cart/>
-                <div><Image src={img.default.src} /></div>
+                <div><Image src={image} /></div>
                 <DescriptionDiv>
                     <Price className='price'>{`$ ${price}`}<span>{`$ ${price + 200}`}</span></Price>
                     <TextDescription>
-                        {description}
+                        {name}
                     </TextDescription>
                 </DescriptionDiv>
             

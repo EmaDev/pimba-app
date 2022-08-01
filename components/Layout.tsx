@@ -7,6 +7,7 @@ interface Props {
     children: any;
 }
 export const Layout: FC<Props> = ({ children }) => {
+
     return (
         <>
             <Head>

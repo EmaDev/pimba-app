@@ -1,12 +1,20 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import { CartProvider } from '../context/CartContext'
+import type { AppProps } from 'next/app';
+import { CartProvider } from '../context/CartContext';
+import { authContext, AuthProvider } from '../context/AuthContext';
+
+import '../styles/globals.css';
+import { ProductsProvider } from '../context/ProductsContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
+
   return (
-    <CartProvider>
-      <Component {...pageProps} />
-    </CartProvider>
+    <AuthProvider>
+      <ProductsProvider>
+        <CartProvider>
+          <Component {...pageProps} />
+        </CartProvider>
+      </ProductsProvider>
+    </AuthProvider>
   )
 }
 

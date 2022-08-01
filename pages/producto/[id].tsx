@@ -1,67 +1,94 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { IoIosArrowDropleft } from 'react-icons/io';
 import { ButtonAddRemove } from '../../components/ButtonAddRemove';
 import { CafilicacionProducto } from '../../components/CafilicacionProducto';
 import { Layout } from '../../components/Layout';
 import { Spinner } from '../../components/Spinner';
 import { ItemCart } from '../../context/CartContext';
-import { ButtonBack, Container, Description, Header, ImageContainer, InfoContainer, Price, ProductContainer, ProductName } from '../../styled/Product.module';
+import { ProductsContext } from '../../context/ProductsContext';
+import { ButtonBack, Container, ContainerSpinner, Description, Header, ImageContainer, InfoContainer, Price, ProductContainer, ProductName } from '../../styled/Product.module';
 
-const imgSrc = require('../../assets/smir.png');
+
+export interface ProductToCart {
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+    image: string;
+    stars: number;
+    stock: number;
+    price: number;
+    quatity: number;
+    combo?: boolean;
+}
 
 const ProductoPage = () => {
 
     const { back, asPath } = useRouter();
-    const [product, setProduct] = useState<ItemCart>();
+    const { getProductByIdFromDB } = useContext(ProductsContext);
     const [isLoading, setIsLoading] = useState(true);
+    const [product, setProduct] = useState<ProductToCart | null>(null);
 
-    useEffect(() => {
-        const prodId = asPath.split('/');
-        console.log(prodId[2]);
-        //consumir api
-        setTimeout(() => {
+    const getData = async (id: string) => {
+        const { data, ok }: any = await getProductByIdFromDB(id);
+        if (ok) {
             setProduct({
-                id: 'veverv88',
-                name: 'Smirnof',
-                price: 1600,
-                quatity: 1
+                id,
+                name: data.name,
+                price: data.price,
+                category: data.category,
+                description: data.description,
+                image: data.image,
+                stars: 4,
+                stock: data.stock,
+                quatity: 1,
+                combo: (data.combo) ? true : false
             });
             setIsLoading(false);
-        }, 100);
-    }, []);
+        }
+    }
+    useEffect(() => {
+        const prodId = asPath.split('/');
+        getData(prodId[2]);
+    }, [asPath]);
 
     return (
         <Layout>
             {
-                (!isLoading && product) ?
+                (isLoading) ?
+                    <ContainerSpinner>
+                        <Spinner/>
+                    </ContainerSpinner>
+                    :
                     <Container>
                         <Header>
                             <ButtonBack>
                                 <IoIosArrowDropleft onClick={back} />
                             </ButtonBack>
-                            <ProductContainer>
+                            <ProductContainer combo={product?.combo}>
                                 <ImageContainer>
-                                    <img src={imgSrc.default.src} />
+                                    <img src={product?.image} />
                                 </ImageContainer>
                                 <InfoContainer>
-                                    <p>Vodka</p>
-                                    <ProductName>Smirnoff Original</ProductName>
-                                    <CafilicacionProducto calif={2} />
+                                    <p>{product?.category}</p>
+                                    <ProductName>{product?.name}</ProductName>
+                                    <CafilicacionProducto calif={(product?.stars) ? product.stars : 5} />
                                     <Price className='price'>
-                                        $ 1800
+                                        {`$ ${product?.price}`}
                                     </Price>
                                 </InfoContainer>
                             </ProductContainer>
                         </Header>
                         <Description>
                             <h3>Descripcion</h3>
-                            <p>Lorem ipsum dolor sit, animi debitis odit iure fugiat animi debitis odit iure fugiat. Autem, totam?</p>
+                            <p>{product?.description}</p>
                         </Description>
-                        <ButtonAddRemove prod={product} />
+                        {
+                            (product) && 
+                            <ButtonAddRemove prod={product} />
+                        }
                     </Container>
-                    :
-                    <Spinner />
             }
         </Layout>
     )

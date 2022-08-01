@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const ContainerSpinner = styled.div`
+   width: 100%;
+   height: 100vh;
+   display:flex;
+   margin:auto;
+   padding: 3rem;
+   justify-content:center;
+   align-items:center;
+`;
 export const Container = styled.div`
     min-height: 80vh;
     display: flex;

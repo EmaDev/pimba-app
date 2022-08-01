@@ -50,6 +50,19 @@ export const ItemQuantity = styled.div`
    }
 `;
 
+export const ImageContainer = styled.div`
+   width: 60px;
+   height: 70px;
+   margin:auto;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+
+   img{
+      height: 100%;
+   }
+`;
+
 export const ButtonRemove = styled.button`
    position: absolute;
    top: 5px;
