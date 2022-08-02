@@ -65,6 +65,13 @@ export const InfoContainer = styled.div`
     font-weight: 500;
     color: grey;
   } 
+  p{
+   margin:0;
+   span{
+      font-weight: 500;
+      text-transform: capitalize;
+   }
+  }
 `;
 export const ProductName = styled.h2`
   font-size: 2.2rem;

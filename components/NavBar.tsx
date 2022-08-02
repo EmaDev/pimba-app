@@ -5,11 +5,15 @@ import { CgGames, CgProfile } from 'react-icons/cg';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+
 const Container = styled.div`
    width: 100%;
    position: fixed;
    bottom: 0;
    z-index: 999;
+   @media(min-width: 768px){
+    display:none;
+   }
 `;
 
 const DivButtons = styled.div`
@@ -42,7 +46,6 @@ export const NavBar = () => {
 
     const { route } = useRouter();
 
-    //console.log(router.route);
     return (
         <Container>
             <DivButtons>

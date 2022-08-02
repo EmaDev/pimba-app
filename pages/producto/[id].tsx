@@ -71,7 +71,7 @@ const ProductoPage = () => {
                                     <img src={product?.image} />
                                 </ImageContainer>
                                 <InfoContainer>
-                                    <p>{product?.category}</p>
+                                    <p>Categoria: <span>{product?.category}</span></p>
                                     <ProductName>{product?.name}</ProductName>
                                     <CafilicacionProducto calif={(product?.stars) ? product.stars : 5} />
                                     <Price className='price'>

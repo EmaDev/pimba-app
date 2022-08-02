@@ -1,21 +1,17 @@
 import React, { useContext } from 'react';
-import { MdDeleteForever } from 'react-icons/md';
-import { ButtonAddRemoveSimple } from '../components/ButtonAddRemove';
+import { useRouter } from 'next/router';
+import { CartItem } from '../components/CartItem';
 import { Layout } from '../components/Layout';
-import { CartContext, ItemCart } from '../context/CartContext';
-import { ButtonRemove, Container, ImageContainer, ItemCard, ItemDescription, ItemQuantity, Title } from '../styled/Cart.module';
-
-const prod: ItemCart = {
-  id: 'cervre',
-  name: 'smirloo',
-  price: 1820,
-  quatity: 8,
-  image: 'vervrev'
-}
+import { authContext } from '../context/AuthContext';
+import { CartContext } from '../context/CartContext';
+import { ButtonConfirmCart, Container, Section, SumaryDiv, Title } from '../styled/Cart.module';
+import Swal from 'sweetalert2';
 
 const CarritoPage = () => {
 
   const { cart, removeItemToCart } = useContext(CartContext);
+  const {user} = useContext(authContext);
+  const {push} = useRouter();
 
   const subtotalCalculator = () => {
     let subtotal = 0;
@@ -24,37 +20,73 @@ const CarritoPage = () => {
     });
     return subtotal;
   }
+
+  const handleGoToPayment = () => {
+    /*if(!user){
+     return console.log('no esta logeado');
+    }*/
+    return Swal.fire({
+      title: 'Procesar compra',
+      text: "Estas seguro de la realizar la compra?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, confirmar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Compra proncesada!',
+          'Tu pedido fue procesadp correctamente.',
+          'success'
+        )
+      }
+    })
+  }
+
   return (
     <Layout>
       <Container>
-        <Title>Tu Carrito</Title>
         {
-          cart.map(item => (
-            <ItemCard key={item.id}>
-              <ButtonRemove onClick={() => removeItemToCart(item.id)}>X</ButtonRemove>
-              <ImageContainer>
-                <img src={item.image}/>
-              </ImageContainer>
-              <div>
-                <ItemDescription>
-                  <p style={{maxWidth: '200px'}}>{item.name}</p>
-                  <span className='precio'>{`$ ${item.price}`}</span>
-                </ItemDescription>
+          (cart.length === 0) ?
+            <h1>El carrito esta vacio</h1>
+            :
+            <>
+              <Section>
+                {
+                  cart.map(item => (
+                    <CartItem
+                      key={item.id}
+                      id={item.id}
+                      image={item.image}
+                      name={item.name}
+                      price={item.price}
+                      quantity={item.quatity}
+                      removeItemToCart={removeItemToCart}
+                    />
+                  ))
+                }
+              </Section>
+              <Section left>
+                  <h2>Resumen</h2>
+                  <SumaryDiv>
+                    <h3>Subtotal</h3>
+                    <p className='price'>{`$ ${subtotalCalculator()}`}</p>
+                  </SumaryDiv>
+                  <SumaryDiv>
+                    <h3>Envio</h3>
+                    <p className='price'>$ 125</p>
+                  </SumaryDiv>
+                  <SumaryDiv total>
+                    <h3>Total</h3>
+                    <p className='price'>{`$ ${subtotalCalculator() + 125}`}</p>
+                  </SumaryDiv>
 
-                <ItemQuantity>
-                  <ButtonAddRemoveSimple id={item.id} initialQuant={item.quatity} />
-                  <h4>Total:<span className='precio'>{`$ ${item.price * item.quatity}`}</span></h4>
-                </ItemQuantity>
-
-              </div>
-            </ItemCard>
-          ))
+                  <ButtonConfirmCart onClick={handleGoToPayment}>Confirmar</ButtonConfirmCart>
+              </Section>
+            </>
         }
-
-        <div>
-          <h2>Subtotal</h2>
-          <p>{subtotalCalculator()}</p>
-        </div>
       </Container>
     </Layout>
   )

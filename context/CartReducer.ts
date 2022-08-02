@@ -35,7 +35,6 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
             }
         case 'updateItem':
             const itemSearched = state.cart.find(item => item.id === action.payload.itemId);
-            console.log(itemSearched);
             return itemSearched ? {
 
                 ...state,
